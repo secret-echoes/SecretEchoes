@@ -47,7 +47,7 @@
 <body>
     <h1 class="form-title">Share Your Anonymous Confession</h1>
     <p>Enter the details below:</p>
-    <form action="https://docs.google.com/forms/d/e/1FAIpQLSeKPsMJxLdWN6pqeUTzfinLyiBPM2ZUd6SXP-QHZyHxRpLFGg/formResponse" method="post" target="_blank">
+    <form action="https://docs.google.com/forms/d/e/1FAIpQLSeKPsMJxLdWN6pqeUTzfinLyiBPM2ZUd6SXP-QHZyHxRpLFGg/formResponse" method="post" target="hidden_iframe" onsubmit="window.location.href='thank_you.html'; return false;">
     <!-- Gender Dropdown -->
     <label for="gender">Gender:</label>
     <select name="entry.246219010" id="gender" required>
@@ -71,6 +71,6 @@
     <!-- Submit Button -->
     <button type="submit">Submit</button>
 </form>
-
+<iframe name="hidden_iframe" style="display:none;"></iframe>
 </body>
 </html>
