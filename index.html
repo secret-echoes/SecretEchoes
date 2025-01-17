@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anonymous Confessions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+        }
+        form {
+            margin: 20px auto;
+            max-width: 500px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        input, textarea, select, button {
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .form-title {
+            text-align: center;
+            font-size: 2em;
+            color: #333;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="form-title">Share Your Anonymous Confession</h1>
+    <p>Enter the details below:</p>
+    <form action="https://docs.google.com/forms/d/e/1FAIpQLSeKPsMJxLdWN6pqeUTzfinLyiBPM2ZUd6SXP-QHZyHxRpLFGg/formResponse" method="post" target="_blank">
+    <!-- Gender Dropdown -->
+    <label for="gender">Gender:</label>
+    <select name="entry.246219010" id="gender" required>
+        <option value="" disabled selected>Select your gender</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+    </select><br><br>
+
+    <!-- Age Number Input -->
+    <label for="age">Age:</label>
+    <input type="number" name="entry.1560358415" id="age" placeholder="Your Age" required min="1" max="120"><br><br>
+
+    <!-- Title Input -->
+    <label for="title">Title of Confession:</label>
+    <input type="text" name="entry.1794505664" id="title" placeholder="Title of your confession" required><br><br>
+
+    <!-- Confession Textarea -->
+    <label for="confession">Your Confession:</label>
+    <textarea name="entry.965403105" id="confession" placeholder="Type your confession here..." required></textarea><br><br>
+
+    <!-- Submit Button -->
+    <button type="submit">Submit</button>
+</form>
+
+</body>
+</html>
