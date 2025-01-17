@@ -87,9 +87,9 @@
             form.target = iframe.name; // Set target to hidden iframe
             form.submit(); // Submit form data
 
-            // After submission, redirect to Thank You page
+            // After submission, redirect to Thank You page using replace
             setTimeout(function() {
-                window.location.href = 'thank_you.html'; // Redirect to Thank You page after submission
+                window.location.replace('thank_you.html'); // Replace the current page with Thank You page
             }, 2000); // 2 seconds delay to ensure submission happens
         };
     </script>
