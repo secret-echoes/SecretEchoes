@@ -47,30 +47,52 @@
 <body>
     <h1 class="form-title">Share Your Anonymous Confession</h1>
     <p>Enter the details below:</p>
-    <form action="https://docs.google.com/forms/d/e/1FAIpQLSeKPsMJxLdWN6pqeUTzfinLyiBPM2ZUd6SXP-QHZyHxRpLFGg/formResponse" method="post" target="hidden_iframe" onsubmit="window.location.href='thank_you.html'; return false;">
-    <!-- Gender Dropdown -->
-    <label for="gender">Gender:</label>
-    <select name="entry.246219010" id="gender" required>
-        <option value="" disabled selected>Select your gender</option>
-        <option value="Male">Male</option>
-        <option value="Female">Female</option>
-    </select><br><br>
+    <form id="confessionForm" action="https://docs.google.com/forms/d/e/1FAIpQLSeKPsMJxLdWN6pqeUTzfinLyiBPM2ZUd6SXP-QHZyHxRpLFGg/formResponse" method="post" target="hidden_iframe">
+        <!-- Gender Dropdown -->
+        <label for="gender">Gender:</label>
+        <select name="entry.246219010" id="gender" required>
+            <option value="" disabled selected>Select your gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select><br><br>
 
-    <!-- Age Number Input -->
-    <label for="age">Age:</label>
-    <input type="number" name="entry.1560358415" id="age" placeholder="Your Age" required min="1" max="120"><br><br>
+        <!-- Age Number Input -->
+        <label for="age">Age:</label>
+        <input type="number" name="entry.1560358415" id="age" placeholder="Your Age" required min="1" max="120"><br><br>
 
-    <!-- Title Input -->
-    <label for="title">Title of Confession:</label>
-    <input type="text" name="entry.1794505664" id="title" placeholder="Title of your confession" required><br><br>
+        <!-- Title Input -->
+        <label for="title">Title of Confession:</label>
+        <input type="text" name="entry.1794505664" id="title" placeholder="Title of your confession" required><br><br>
 
-    <!-- Confession Textarea -->
-    <label for="confession">Your Confession:</label>
-    <textarea name="entry.965403105" id="confession" placeholder="Type your confession here..." required></textarea><br><br>
+        <!-- Confession Textarea -->
+        <label for="confession">Your Confession:</label>
+        <textarea name="entry.965403105" id="confession" placeholder="Type your confession here..." required></textarea><br><br>
 
-    <!-- Submit Button -->
-    <button type="submit">Submit</button>
-</form>
-<iframe name="hidden_iframe" style="display:none;"></iframe>
+        <!-- Submit Button -->
+        <button type="submit">Submit</button>
+    </form>
+
+    <iframe name="hidden_iframe" style="display:none;"></iframe>
+
+    <script>
+        document.getElementById("confessionForm").onsubmit = function(event) {
+            event.preventDefault(); // Prevent form from auto-submitting
+
+            // Submit the form data
+            var form = document.getElementById("confessionForm");
+            var iframe = document.createElement("iframe");
+            iframe.style.display = "none";
+            document.body.appendChild(iframe);
+
+            form.target = iframe.name; // Set target to hidden iframe
+            form.submit(); // Submit form data
+
+            // After submission, redirect to Thank You page
+            setTimeout(function() {
+                window.location.href = 'thank_you.html'; // Redirect to Thank You page after submission
+            }, 2000); // 2 seconds delay to ensure submission happens
+        };
+    </script>
+
 </body>
 </html>
