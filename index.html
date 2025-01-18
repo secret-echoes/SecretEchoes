@@ -5,87 +5,102 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anonymous Confessions</title>
     <style>
+        /* General Styles */
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom, #f3a683, #ffcccc);
             color: #333;
             text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #ff6b81;
+            color: white;
             padding: 20px;
+            font-size: 2rem;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
         }
         form {
+            background-color: white;
             margin: 20px auto;
             max-width: 500px;
-            background: #fff;
             padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
         }
         input, textarea, select, button {
             width: 100%;
-            margin: 10px 0;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
+            margin: 15px 0;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border: 2px solid #ff6b81;
         }
         button {
-            background-color: #007bff;
+            background-color: #ff6b81;
             color: white;
-            border: none;
+            font-size: 1.2rem;
             cursor: pointer;
+            transition: 0.3s;
         }
         button:hover {
-            background-color: #0056b3;
+            background-color: #ff3f5e;
         }
-        .form-title {
-            text-align: center;
-            font-size: 2em;
-            color: #333;
-            margin-bottom: 20px;
+        footer {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #555;
         }
-        .thank-you-message {
+        #thankYouMessage {
             display: none;
-            font-size: 1.5em;
-            color: green;
+            font-size: 1.5rem;
+            color: white;
+            background-color: #28a745;
+            padding: 20px;
+            border-radius: 10px;
             margin-top: 20px;
         }
     </style>
 </head>
 <body>
-    <h1 class="form-title">Share Your Anonymous Confession</h1>
-    <p>Enter the details below:</p>
+    <header>Anonymous Confessions</header>
+    <p style="margin-top: 10px; color: white; font-size: 1.2rem;">Share your thoughts, no judgments!</p>
     
-    <form id="confessionForm" action="https://docs.google.com/forms/d/e/1FAIpQLSeKPsMJxLdWN6pqeUTzfinLyiBPM2ZUd6SXP-QHZyHxRpLFGg/formResponse" method="POST" target="hiddenFrame">
+    <form id="confessionForm" action="https://docs.google.com/forms/d/e/1FAIpQLSeKPsMJxLdWN6pqeUTzfinLyiBPM2ZUd6SXP-QHZyHxRpLFGg/formResponse" method="post" target="_blank">
         <!-- Gender Dropdown -->
-        <label for="gender">Gender:</label>
+        <label for="gender" style="font-weight: bold; color: #555;">Gender:</label>
         <select name="entry.246219010" id="gender" required>
             <option value="" disabled selected>Select your gender</option>
             <option value="Male">Male</option>
             <option value="Female">Female</option>
-        </select><br><br>
+        </select>
 
         <!-- Age Number Input -->
-        <label for="age">Age:</label>
-        <input type="number" name="entry.1560358415" id="age" placeholder="Your Age" required min="1" max="120"><br><br>
+        <label for="age" style="font-weight: bold; color: #555;">Age:</label>
+        <input type="number" name="entry.1560358415" id="age" placeholder="Your Age" required min="1" max="120">
 
         <!-- Title Input -->
-        <label for="title">Title of Confession:</label>
-        <input type="text" name="entry.1794505664" id="title" placeholder="Title of your confession" required><br><br>
+        <label for="title" style="font-weight: bold; color: #555;">Title of Confession:</label>
+        <input type="text" name="entry.1794505664" id="title" placeholder="Title of your confession" required>
 
         <!-- Confession Textarea -->
-        <label for="confession">Your Confession:</label>
-        <textarea name="entry.965403105" id="confession" placeholder="Type your confession here..." required></textarea><br><br>
+        <label for="confession" style="font-weight: bold; color: #555;">Your Confession:</label>
+        <textarea name="entry.965403105" id="confession" placeholder="Type your confession here..." required></textarea>
 
         <!-- Submit Button -->
         <button type="submit">Submit</button>
     </form>
 
-    <!-- Thank You Message -->
-    <div id="thankYouMessage" class="thank-you-message">
-        Thank you for your confession! Redirecting you to the homepage...
-    </div>
+    <div id="thankYouMessage">Thank you for sharing your confession!</div>
 
-    <!-- Hidden iframe -->
-    <iframe name="hiddenFrame" style="display:none;"></iframe>
+    <footer>© 2025 Anonymous Confessions | All rights reserved.</footer>
 
     <script>
         // Get the form and thank you message elements
@@ -103,7 +118,7 @@
 
             // Redirect to the homepage after 3 seconds
             setTimeout(() => {
-                window.location.href = 'https://secret-echoes.github.io/SecretEchoes/'; // Replace with your homepage URL
+                window.location.href = 'https://secret-echoes.github.io/SecretEchoes/'; // Replace with your actual GitHub Pages URL
             }, 3000);
         });
     </script>
