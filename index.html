@@ -5,82 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anonymous Confessions</title>
     <style>
-        /* General Styles */
         body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #f4a261, #2a9d8f);
             color: #333;
             text-align: center;
             padding: 20px;
-            margin: 0;
         }
-        h1 {
-            font-size: 2.5em;
-            color: #4a4e69;
-            margin-bottom: 10px;
-        }
-        p {
-            font-size: 1.2em;
-            color: #6c757d;
-        }
-
-        /* Form Styles */
         form {
             margin: 20px auto;
             max-width: 500px;
-            background: white;
+            background: #fff;
             padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-        }
-        label {
-            font-weight: bold;
-            font-size: 1em;
-            color: #333;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         input, textarea, select, button {
             width: 100%;
-            margin: 15px 0;
+            margin: 10px 0;
             padding: 12px;
-            border-radius: 8px;
             border: 1px solid #ddd;
+            border-radius: 4px;
             font-size: 1em;
         }
-        input:focus, textarea:focus, select:focus {
-            outline: none;
-            border: 2px solid #6a0572;
+        textarea {
+            height: 150px; /* Increased height */
+            resize: none; /* Prevent resizing */
         }
-
-        /* Button Styles */
         button {
-            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            background-color: #007bff;
             color: white;
-            font-size: 1.2em;
             border: none;
             cursor: pointer;
-            transition: background 0.3s ease;
+            font-size: 1.1em;
         }
         button:hover {
-            background: linear-gradient(to right, #ff5d79, #ff6d96);
+            background-color: #0056b3;
         }
-
-        /* Thank You Message */
+        .form-title {
+            text-align: center;
+            font-size: 2.5em;
+            color: #fff;
+            margin-bottom: 20px;
+        }
         .thank-you-message {
             display: none;
             font-size: 1.5em;
-            color: #28a745;
-            background: white;
+            color: #fff;
+            margin-top: 20px;
             padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-            margin: 20px auto;
-            max-width: 500px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #2a9d8f, #264653);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
     </style>
 </head>
 <body>
-    <h1>Share Your Anonymous Confession</h1>
-    <p>Feel free to share your thoughts with us. No judgments!</p>
+    <h1 class="form-title">Share Your Anonymous Confession</h1>
+    <p style="color: #fff;">We value your privacy. Share your thoughts with us anonymously!</p>
     
     <form id="confessionForm" action="https://docs.google.com/forms/d/e/1FAIpQLSeKPsMJxLdWN6pqeUTzfinLyiBPM2ZUd6SXP-QHZyHxRpLFGg/formResponse" method="POST" target="hiddenFrame">
         <!-- Gender Dropdown -->
@@ -89,19 +71,19 @@
             <option value="" disabled selected>Select your gender</option>
             <option value="Male">Male</option>
             <option value="Female">Female</option>
-        </select>
+        </select><br><br>
 
         <!-- Age Number Input -->
         <label for="age">Age:</label>
-        <input type="number" name="entry.1560358415" id="age" placeholder="Your Age" required min="1" max="120">
+        <input type="number" name="entry.1560358415" id="age" placeholder="Your Age" required min="1" max="120"><br><br>
 
         <!-- Title Input -->
         <label for="title">Title of Confession:</label>
-        <input type="text" name="entry.1794505664" id="title" placeholder="Title of your confession" required>
+        <input type="text" name="entry.1794505664" id="title" placeholder="Title of your confession" required><br><br>
 
         <!-- Confession Textarea -->
         <label for="confession">Your Confession:</label>
-        <textarea name="entry.965403105" id="confession" placeholder="Type your confession here..." required></textarea>
+        <textarea name="entry.965403105" id="confession" placeholder="Type your confession here..." required></textarea><br><br>
 
         <!-- Submit Button -->
         <button type="submit">Submit</button>
