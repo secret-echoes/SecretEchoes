@@ -6,66 +6,105 @@
     <title>Anonymous Confessions</title>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 50%, #fad0c4 100%);
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
             color: #333;
             text-align: center;
             padding: 20px;
         }
-        h1 {
-            font-size: 2.8em;
-            margin-bottom: 15px;
-            color: #fff;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-        }
-        iframe {
-            width: 100%;
-            max-width: 640px;
-            height: 800px;
-            border: none;
+        form {
+            margin: 20px auto;
+            max-width: 500px;
+            background: #fff;
+            padding: 20px;
             border-radius: 8px;
-            margin-top: 20px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-        .thank-you {
+        input, textarea, select, button {
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .form-title {
+            text-align: center;
+            font-size: 2em;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .thank-you-message {
             display: none;
             font-size: 1.5em;
-            color: #fff;
+            color: green;
             margin-top: 20px;
         }
     </style>
 </head>
 <body>
-    <h1>Share Your Anonymous Confession</h1>
-    <p>Your identity will remain confidential. Be honest, open, and expressive!</p>
+    <h1 class="form-title">Share Your Anonymous Confession</h1>
+    <p>Enter the details below:</p>
     
-    <!-- Embed Google Form -->
-    <iframe 
-        id="confessionForm" 
-        src="https://docs.google.com/forms/d/e/1FAIpQLSeKPsMJxLdWN6pqeUTzfinLyiBPM2ZUd6SXP-QHZyHxRpLFGg/viewform?embedded=true">
-    </iframe>
-    
+    <form id="confessionForm" action="https://docs.google.com/forms/d/e/1FAIpQLSeKPsMJxLdWN6pqeUTzfinLyiBPM2ZUd6SXP-QHZyHxRpLFGg/formResponse" method="POST" target="hiddenFrame">
+        <!-- Gender Dropdown -->
+        <label for="gender">Gender:</label>
+        <select name="entry.246219010" id="gender" required>
+            <option value="" disabled selected>Select your gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select><br><br>
+
+        <!-- Age Number Input -->
+        <label for="age">Age:</label>
+        <input type="number" name="entry.1560358415" id="age" placeholder="Your Age" required min="1" max="120"><br><br>
+
+        <!-- Title Input -->
+        <label for="title">Title of Confession:</label>
+        <input type="text" name="entry.1794505664" id="title" placeholder="Title of your confession" required><br><br>
+
+        <!-- Confession Textarea -->
+        <label for="confession">Your Confession:</label>
+        <textarea name="entry.965403105" id="confession" placeholder="Type your confession here..." required></textarea><br><br>
+
+        <!-- Submit Button -->
+        <button type="submit">Submit</button>
+    </form>
+
     <!-- Thank You Message -->
-    <div class="thank-you" id="thankYouMessage">
-        Thank you for your confession! Redirecting to the homepage...
+    <div id="thankYouMessage" class="thank-you-message">
+        Thank you for your confession! Redirecting you to the homepage...
     </div>
 
+    <!-- Hidden iframe -->
+    <iframe name="hiddenFrame" style="display:none;"></iframe>
+
     <script>
-        // Detect form submission by monitoring the iframe
-        const iframe = document.getElementById('confessionForm');
+        // Get the form and thank you message elements
+        const form = document.getElementById('confessionForm');
         const thankYouMessage = document.getElementById('thankYouMessage');
 
-        iframe.addEventListener('load', () => {
-            // Check if the Google Form has changed to "Thank You" message
-            if (iframe.contentDocument.body.textContent.includes('Your response has been recorded')) {
-                // Show Thank You message
-                thankYouMessage.style.display = 'block';
-                
-                // Redirect back to homepage after 3 seconds
-                setTimeout(() => {
-                    window.location.href = 'https://yourwebsite.github.io';
-                }, 3000);
-            }
+        // Add a submit event listener
+        form.addEventListener('submit', (e) => {
+            e.preventDefault(); // Prevent default submission
+            form.style.display = 'none'; // Hide the form
+            thankYouMessage.style.display = 'block'; // Show thank you message
+
+            // Submit the form programmatically
+            form.submit();
+
+            // Redirect to the homepage after 3 seconds
+            setTimeout(() => {
+                window.location.href = 'https://yourwebsite.github.io'; // Replace with your homepage URL
+            }, 3000);
         });
     </script>
 </body>
