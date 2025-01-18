@@ -11,128 +11,62 @@
             color: #333;
             text-align: center;
             padding: 20px;
-            margin: 0;
         }
-
         h1 {
             font-size: 2.8em;
             margin-bottom: 15px;
             color: #fff;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
         }
-
-        p {
-            font-size: 1.3em;
-            margin-bottom: 30px;
-            color: #fff;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-        }
-
-        form {
-            background: linear-gradient(145deg, #ffffff, #e6e6e6);
-            border: 2px solid #ff6f61;
-            border-radius: 15px;
-            max-width: 500px;
-            margin: 0 auto;
-            padding: 25px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        label {
-            display: block;
-            font-size: 1.2em;
-            margin-bottom: 8px;
-            text-align: left;
-            color: #333;
-        }
-
-        input, textarea, select, button {
+        iframe {
             width: 100%;
-            margin: 10px 0;
-            padding: 12px;
+            max-width: 640px;
+            height: 800px;
             border: none;
             border-radius: 8px;
-            font-size: 1em;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
-
-        input, textarea, select {
-            background: rgba(255, 255, 255, 0.9);
-            color: #333;
-        }
-
-        input:focus, textarea:focus, select:focus {
-            outline: none;
-            box-shadow: 0 0 5px rgba(255, 111, 97, 0.8);
-        }
-
-        textarea {
-            resize: none;
-            height: 120px;
-        }
-
-        button {
-            background: linear-gradient(145deg, #ff6f61, #ff3e3e);
-            color: white;
-            font-weight: bold;
-            cursor: pointer;
-            transition: transform 0.2s ease;
-        }
-
-        button:hover {
-            transform: scale(1.05);
-        }
-
-        button:active {
-            transform: scale(0.98);
-        }
-
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 2.2em;
-            }
-
-            p {
-                font-size: 1em;
-            }
-
-            form {
-                padding: 20px;
-            }
-
-            input, textarea, select, button {
-                font-size: 0.9em;
-                padding: 10px;
-            }
+        .thank-you {
+            display: none;
+            font-size: 1.5em;
+            color: #fff;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
     <h1>Share Your Anonymous Confession</h1>
     <p>Your identity will remain confidential. Be honest, open, and expressive!</p>
-    <form action="https://docs.google.com/forms/d/e/1FAIpQLSeKPsMJxLdWN6pqeUTzfinLyiBPM2ZUd6SXP-QHZyHxRpLFGg/formResponse" method="post" target="_blank">
-        <!-- Gender Dropdown -->
-        <label for="gender">Gender:</label>
-        <select name="entry.246219010" id="gender" required>
-            <option value="" disabled selected>Select your gender</option>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-        </select>
+    
+    <!-- Embed Google Form -->
+    <iframe 
+        id="confessionForm" 
+        src="https://docs.google.com/forms/d/e/1FAIpQLSeKPsMJxLdWN6pqeUTzfinLyiBPM2ZUd6SXP-QHZyHxRpLFGg/viewform?embedded=true">
+    </iframe>
+    
+    <!-- Thank You Message -->
+    <div class="thank-you" id="thankYouMessage">
+        Thank you for your confession! Redirecting to the homepage...
+    </div>
 
-        <!-- Age Number Input -->
-        <label for="age">Age:</label>
-        <input type="number" name="entry.1560358415" id="age" placeholder="Your Age" required min="1" max="120">
+    <script>
+        // Detect form submission by monitoring the iframe
+        const iframe = document.getElementById('confessionForm');
+        const thankYouMessage = document.getElementById('thankYouMessage');
 
-        <!-- Title Input -->
-        <label for="title">Title of Confession:</label>
-        <input type="text" name="entry.1794505664" id="title" placeholder="Title of your confession" required>
-
-        <!-- Confession Textarea -->
-        <label for="confession">Your Confession:</label>
-        <textarea name="entry.965403105" id="confession" placeholder="Type your confession here..." required></textarea>
-
-        <!-- Submit Button -->
-        <button type="submit">Submit</button>
-    </form>
+        iframe.addEventListener('load', () => {
+            // Check if the Google Form has changed to "Thank You" message
+            if (iframe.contentDocument.body.textContent.includes('Your response has been recorded')) {
+                // Show Thank You message
+                thankYouMessage.style.display = 'block';
+                
+                // Redirect back to homepage after 3 seconds
+                setTimeout(() => {
+                    window.location.href = 'https://yourwebsite.github.io';
+                }, 3000);
+            }
+        });
+    </script>
 </body>
 </html>
